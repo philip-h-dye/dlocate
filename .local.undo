@@ -1,0 +1,61 @@
+#
+# .custom loaded at end
+#
+if [ -n "${venv}" ] ; then
+    unset venv
+fi
+#
+
+function unalias_quiet () {
+    unalias "$@" 2>/dev/null
+}
+
+# # . ~/.bash/pp.sh -- superceeded by ~/.local/bin/set-python-path and friends
+
+if [ -n "${VIRTUAL_ENV}" ] ; then
+    deactivate
+fi   
+
+unalias_quiet c
+unalias_quiet b
+unalias_quiet t
+unalias_quiet x
+unalias_quiet i
+
+unalias_quiet xi
+
+unset l_area
+unset l_nth
+
+unalias_quiet edit-local
+unalias_quiet editlocal
+unalias_quiet el
+
+unalias_quiet edit-build
+unalias_quiet eb
+
+unalias_quiet edit-test
+unalias_quiet et
+
+unalias_quiet edit-run
+unalias_quiet er
+
+unalias_quiet snap
+unset -f snap
+unalias_quiet tocyg
+unset vtrim
+unset l
+unset -f inv_b_filter
+unalias_quiet ibf
+
+#
+
+unset -f inv    
+
+if [ -e .custom.undo ] ; then
+    source .custom.undo
+fi
+
+unset -f unalias_quiet
+
+#

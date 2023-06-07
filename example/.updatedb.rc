@@ -1,0 +1,47 @@
+#------------------------------------------------------------------------------
+# ~/.updatedb.rc contains user specific configuration for dupdatedb, dlocate
+#------------------------------------------------------------------------------
+
+# globals configuration values
+
+os :
+
+  Cygwin :
+    default_drive :     entire
+    db_file_model :     ~/var/mlocate/{}.db
+    applications :
+      - updatedb :      /usr/local/bin/updatedb.exe
+      - locate :        /usr/local/bin/locate.exe
+
+  Linux :
+    default_drive :     entire
+    db_file_model :     ~/var/mlocate/{}.db
+    applications :
+      - updatedb :      /usr/bin/updatedb
+      - locate :        /usr/bin/locate
+
+#------------------------------------------------------------------------------
+
+# Named 'drives' with individual mlocate databases
+
+drives :
+
+  - name :              entire
+    alias :             all
+    root :              "~"
+    add_prunepaths :    ~/var ~/alt
+
+  - name :              aaa
+    alias :             a
+    root :              ~/aaa
+
+  - name :              bbb
+    alias :             b
+    root :              ~/bbb
+
+  - name :              ccc
+    alias :             c
+    root :              ~/ccc
+    db_file_model :     ~/alt/mlocate/{}.db
+
+#------------------------------------------------------------------------------

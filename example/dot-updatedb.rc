@@ -1,0 +1,53 @@
+#------------------------------------------------------------------------------
+# ~/.updatedb.rc contains user specific configuration for $HOME/scripts/updatedb
+#------------------------------------------------------------------------------
+
+# globals configuration values
+
+os :
+
+  Cygwin :
+    default_drive :     all
+    db_file_model :     /usr/local/var/mlocate/{}.db
+    applications :
+      - updatedb :      /usr/local/bin/updatedb.exe
+      - locate :        /usr/local/bin/locate.exe
+
+  Linux :
+    default_drive :     self
+    # db_file_model :     /mnt/c/-/cygwin/root/usr/local/var/mlocate/{}.db
+    db_file_model :     /var/mlocate/{}.db
+    applications :
+      - updatedb :      /usr/bin/updatedb
+      - locate :        /usr/bin/locate
+
+#------------------------------------------------------------------------------
+
+# Named 'drives' with individual mlocate databases
+
+drives :
+
+  - name :              ubuntu
+    alias :             linux
+    root :              /
+    add_prunepaths :    /mnt
+
+  - name :              c.entire
+    alias :             c-entire c-all c-drive c all
+    root :              /c
+    # add_prunepaths :    /c/-/cygwin/root/proc /c/-/cygwin/root/dev /c/-/cygwin/root/usr/bin /c/-/cygwin/root/usr/lib /c/-/cygwin/root/c /c/Users/phdye/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc
+                        # Skip :
+                        #   - volitile (/proc,/dev)
+                        #   - mounted twice (/{bin,lib} as /usr/{bin,lib})
+                        #   - mounted twice (/c as /c/-/cygwin/root/c)
+                        #   - Ubuntu/wsl filesystem
+                        #
+                        # No longer skipped :
+                        #   - cygwin filesystem (was: /c/-/cygwin/root)
+
+#------------------------------------------------------------------------------
+
+  - name :              self
+    root :              /home/phdyex
+
+#------------------------------------------------------------------------------

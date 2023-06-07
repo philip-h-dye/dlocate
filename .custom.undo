@@ -1,0 +1,30 @@
+#------------------------------------------------------------------------------
+
+export PYTHONPATH="$(pwd)"
+
+#------------------------------------------------------------------------------
+
+function pythondebug() {
+    custom_prefix=${HOME}/.debug
+    custom_bin=${custom_prefix}/bin
+    python=${custom_bin}/python3.7-dbg
+    source ~/.path.simple.txt
+    if [[ "${PATH}" != "${custom_bin}:"* ]] ; then
+        export PATH="${custom_bin}:${PATH}"
+        echo -n
+    fi
+    export PYTHONMALLOC=debug
+}
+
+# pythondebug
+
+#------------------------------------------------------------------------------
+
+alias sim=' clear ; logts --silent -b log/simple python t/simple.py '
+alias es=' emacs log/simple/latest.txt '
+
+# alias x=' c && b && sim '
+# alias x=' c && b && t '
+alias x=' c && b '
+
+#------------------------------------------------------------------------------

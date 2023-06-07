@@ -1,0 +1,5 @@
+HOME=${PWD}/example pyhere ./scripts/dupdatedb --rc ./example/.updatedb.rc
+
+HOME=${PWD}/example pyhere ./scripts/dupdatedb
+
+HOME=${PWD}/example pyhere ./scripts/dlocate -d c -r .
